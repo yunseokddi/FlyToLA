@@ -1,3 +1,1 @@
-#Fly to LA
-
-with PseudoLab
+# Fly to LA (with PseudoLab)
