@@ -51,3 +51,21 @@ vocab = np.array(vectorizer.get_feature_names())
 # #  'councils' 'counsel' 'counselees' 'counselor' 'count']
 
 # SVD
+
+U, s, Vh = linalg.svd(vectors, full_matrices=False)
+# print(U.shape, s.shape, Vh.shape)
+# # (2034, 2034) (2034,) (2034, 26576)
+# print(s[:10])
+# plt.plot(s[:10])
+# plt.show()
+
+num_top_words = 8
+
+
+def show_topics(a):
+    top_words = lambda t: [vocab[i] for i in np.argsort(t)[:-num_top_words - 1: -1]]
+    topic_words = ([top_words(t) for t in a])
+    return [' '.join(t) for t in topic_words]
+
+result = show_topics(Vh[:10])
+print(result)

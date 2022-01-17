@@ -13,3 +13,16 @@
 우리는 각각의 다른 카테고리 내의 documents 의 데이터 셋을 취하고, 그들의 topic을 찾을 것이다.진짜 카테고리를 아는 것은 우리가 찾은 주제들이 말이 되는지 평가하는데 도움이 된다.
 
 우리는 이것을 2개의 다른 행렬 분해로 시도할 것이다. **Singular Value Decomposition (SVD)** and **Non-negative Matrix Factorization (NMF)**
+
+### Singular Value Decomposition (SVD)
+우리는 분명하게 하나의 주제에서 가장 자주 등장하는 단어들이 다른 주제에서 덜 나타날 것이라고 예상할 것이다. 그렇지 않으면 그 단어가 두 주제를 분리하는 좋은 선택이 될 수 없을 것이다. 따라서 우리는 주제들이 서로 **orthogonal**할 것으로 예상한다.
+
+SVD 알고리즘은 행렬을 하나의 **orthogogal columns**와 **orthogonal rows** diagonal 행렬로 분리하고, 이는 각 factor의 **상대적 중요성**을 포함한다.
+![SVD_sample](./readme_imgs/svd_fb.png)
+
+SVD는 원래의 행렬을 완전히 덮을 수 있을 만큼 충분히 크기 때문에 정확한 분해이다. SVD는 선형대수학에서 극도록 넓게 쓰이고, data science에서 구체적으로 사용 된다.
+- semantic analysis
+- collaborative filtering/recommendations
+- calculate Moore-Penrose pseudoinverse
+- data compression
+- principal component analysis (will be covered later in course)
