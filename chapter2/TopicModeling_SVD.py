@@ -27,6 +27,29 @@ newsgroups_test = fetch_20newsgroups(subset='test', categories=categories, remov
 # # explicitly said in the manual about saving texture rules in the .PRJ file.
 # # I'd like to be able to read the texture rule information, does anyone have
 # # the format for the .PRJ file?
+# Is the .CEL file format available from somewhere?
+#
+# Rych
+#
+#
+# Seems to be, barring evidence to the contrary, that Koresh was simply
+# another deranged fanatic who thought it neccessary to take a whole bunch of
+# folks with him, children and all, to satisfy his delusional mania. Jim
+# Jones, circa 1993.
+#
+#
+# Nope - fruitcakes like Koresh have been demonstrating such evil corruption
+# for centuries.
+#
+#  >In article <1993Apr19.020359.26996@sq.sq.com>, msb@sq.sq.com (Mark Brader)
+#
+# MB>                                                             So the
+# MB> 1970 figure seems unlikely to actually be anything but a perijove.
+#
+# JG>Sorry, _perijoves_...I'm not used to talking this language.
+#
+# Couldn't we just say periapsis or apoapsis?
+
 
 # print(np.array(newsgroups_train.target_names)[newsgroups_train.target[:3]])
 # # ['comp.graphics' 'talk.religion.misc' 'sci.space']
@@ -54,10 +77,12 @@ vocab = np.array(vectorizer.get_feature_names())
 
 U, s, Vh = linalg.svd(vectors, full_matrices=False)
 # print(U.shape, s.shape, Vh.shape)
-# # (2034, 2034) (2034,) (2034, 26576)
+# (2034, 2034) (2034,) (2034, 26576)
 # print(s[:10])
-# plt.plot(s[:10])
-# plt.show()
+plt.plot(s)
+plt.show()
+plt.plot(s[:10])
+plt.show()
 
 num_top_words = 8
 
