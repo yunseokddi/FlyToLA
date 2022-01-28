@@ -54,4 +54,44 @@ m, n = vectors_tfidf.shape
 
 W1 = clf.fit_transform(vectors)
 H1 = clf.components_
-print(show_topics(H1))
+
+mu = 1e-6
+
+
+def grads(M, W, H):
+    R = W @ H - M
+
+    return R @ H.T + penalty(W, mu) * lam, W.T @ R + penalty(H, mu) * lam
+
+
+def penalty(M, mu):
+    return np.where(M >= mu, 0, np.min(M - mu, 0))
+
+
+def upd(M, W, H, lr):
+    dW, dH = grads(M, W, H)
+
+    W -= lr * dW
+    H -= lr * dH
+
+
+def report(M, W, H):
+    print(np.linalg.norm(M - W @ H), W.min(), H.min(), (W < 0).sum, (H < 0).sum())
+
+
+W = np.abs(np.random.normal(scale=0.01, size=(m, d)))
+H = np.abs(np.random.normal(scale=0.01, size=(d, n)))
+
+report(vectors_tfidf, W, H)
+
+upd(vectors_tfidf, W, H, lr)
+print('-'*30)
+report(vectors_tfidf, W, H)
+
+for i in range(50):
+    upd(vectors_tfidf, W, H, lr)
+    if i % 30 == 0:
+        print('-'*30)
+        report(vectors_tfidf, W, H)
+
+print(show_topics(H))
