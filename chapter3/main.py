@@ -29,12 +29,12 @@ if __name__ == "__main__":
 
     # A first attempt with SVD
 
-    u, s, v = decomposition.randomized_svd(M, 2)
+    # u, s, v = decomposition.randomized_svd(M, 2)
 
     # print(M.shape)  # (4800, 11300)
     # print(u.shape, s.shape, v.shape)  # (4800, 2) (2,) (2, 11300)
 
-    low_rank = u @ np.diag(s) @ v
+    # low_rank = u @ np.diag(s) @ v
 
     # print(low_rank.shape) # (4800, 11300)
 
@@ -50,3 +50,10 @@ if __name__ == "__main__":
     #
     # plt.imshow(np.reshape(M[:, 140] - low_rank[:, 140], dims), cmap='gray')
     # plt.show()
+
+    # m, n = M.shape
+    # print(round(m*.05))
+
+    L, S, examples = pcp(M, maxiter=5, k = 10)
+
+    plots(examples, dims, rows=5)
