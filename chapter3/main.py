@@ -56,4 +56,6 @@ if __name__ == "__main__":
 
     L, S, examples = pcp(M, maxiter=5, k = 10)
 
-    plots(examples, dims, rows=5)
+    # plots(examples, dims, rows=5)
+
+    f = plt_images(M, S, L, [140], dims)
